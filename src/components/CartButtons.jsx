@@ -6,7 +6,22 @@ import { useUserContext } from "../context/user_context";
 import Wrapper from "../assets/wrappers/CartButtons";
 
 const CartButtons = () => {
-  return <h4>cart buttons </h4>;
+  const { closeSidebar } = useProductsContext();
+
+  return (
+    <Wrapper className="cart-btn-wrapper">
+      <Link to="/cart" className="cart-btn" onClick={closeSidebar}>
+        Cart
+        <span className="cart-container">
+          <FaShoppingCart />
+          <span className="cart-value">69</span>
+        </span>
+      </Link>
+      <button type="button" className="auth-btn">
+        login <FaUserPlus />
+      </button>
+    </Wrapper>
+  );
 };
 
 export default CartButtons;

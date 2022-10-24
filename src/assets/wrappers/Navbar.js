@@ -32,7 +32,7 @@ const Wrapper = styled.nav`
   .nav-links {
     display: none;
   }
-  .cart-btn-wrapper {
+  .cart-btn-wrapper { // <-- CartButtons components className
     display: none;
   }
   @media (min-width: 992px) {
@@ -61,7 +61,7 @@ const Wrapper = styled.nav`
         }
       }
     }
-    .cart-btn-wrapper {
+    .cart-btn-wrapper { // <-- CartButtons components className
       display: grid;
     }
   }

@@ -13,5 +13,10 @@ const Wrapper = styled.main`
     text-transform: none;
     margin-bottom: 2rem;
   }
+  @media (max-width: 320px) {
+  h1 {
+    font-size: 5.5rem;
+  }
+}
 `;
 export default Wrapper;

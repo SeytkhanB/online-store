@@ -1,4 +1,4 @@
-import logo from "../assets/logo.svg";
+import Logo from "../assets/logo.svg";
 import { Link } from "react-router-dom";
 import { useProductsContext } from "../context/products_context";
 import { FaTimes } from "react-icons/fa";
@@ -8,7 +8,40 @@ import { useUserContext } from "../context/user_context";
 import Wrapper from "../assets/wrappers/Sidebar";
 
 const Sidebar = () => {
-  return <h4>sidebar</h4>;
+  const { isSidebarOpen, closeSidebar } = useProductsContext();
+
+  return (
+    <Wrapper>
+      <aside
+        className={`${isSidebarOpen ? "sidebar show-sidebar" : "sidebar"}`}
+      >
+        <div className="sidebar-header">
+          <img src={Logo} alt="Comfy sloth" className="logo" />
+          <button className="close-btn" onClick={closeSidebar} type="button">
+            <FaTimes />
+          </button>
+        </div>
+        <ul className="links">
+          {links.map((link) => {
+            const { id, text, url } = link;
+            return (
+              <li key={id}>
+                <Link onClick={closeSidebar} to={url}>
+                  {text}
+                </Link>
+              </li>
+            );
+          })}
+          <li>
+            <Link to="/checkout" onClick={closeSidebar}>
+              checkout
+            </Link>
+          </li>
+        </ul>
+        <CartButtons />
+      </aside>
+    </Wrapper>
+  );
 };
 
 export default Sidebar;

@@ -8,6 +8,8 @@ const Wrapper = styled.footer`
   align-items: center;
   background: var(--clr-black);
   text-align: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
   span {
     color: var(--clr-primary-5);
   }
@@ -18,6 +20,10 @@ const Wrapper = styled.footer`
     font-weight: 400;
     text-transform: none;
     line-height: 1.25;
+  }
+  h5,
+  span {
+    margin-left: 5px;
   }
   @media (min-width: 776px) {
     flex-direction: row;

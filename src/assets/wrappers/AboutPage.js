@@ -7,7 +7,7 @@ const Wrapper = styled.section`
     width: 100%;
     display: block;
     border-radius: var(--radius);
-    height: 500px;
+    height: 100%;
     object-fit: cover;
   }
   p {
