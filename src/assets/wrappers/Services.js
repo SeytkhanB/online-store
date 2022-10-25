@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 const Wrapper = styled.section`
+  max-width: 2200px;
+  margin: 0 auto;
+
   h3,
   h4 {
     color: var(--clr-primary-1);
@@ -20,7 +23,7 @@ const Wrapper = styled.section`
   .services-center {
     margin-top: 4rem;
     display: grid;
-    gap: 2.5rem;
+    gap: 2rem;
   }
   .service {
     background: var(--clr-primary-7);

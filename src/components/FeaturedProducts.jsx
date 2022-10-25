@@ -6,7 +6,28 @@ import Product from "./Product";
 import Wrapper from "../assets/wrappers/FeaturedProducts";
 
 const FeaturedProducts = () => {
-  return <h4>featured products</h4>;
+  const {
+    isProducts_loading: isLoading,
+    isProducts_error: isError,
+    featured_products: featured,
+  } = useProductsContext();
+
+  if (isLoading) return <Loading />;
+  if (isError) return <Error />;
+
+  return (
+    <Wrapper className="section">
+      <div className="title">
+        <h2>featured products</h2>
+        <div className="underline"></div>
+        <div className="section-center featured">
+          {featured.map((product) => {
+            return <Product key={product.id} {...product} />;
+          })}
+        </div>
+      </div>
+    </Wrapper>
+  );
 };
 
 export default FeaturedProducts;

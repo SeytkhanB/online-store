@@ -8,7 +8,7 @@ const Wrapper = styled.footer`
   align-items: center;
   background: var(--clr-black);
   text-align: center;
-  max-width: var(--max-width);
+  max-width: 2200px;
   margin: 0 auto;
   span {
     color: var(--clr-primary-5);
