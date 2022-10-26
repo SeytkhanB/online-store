@@ -5,8 +5,59 @@ import { useCartContext } from "../context/cart_context";
 import AmountButtons from "./AmountButtons";
 import Wrapper from "../assets/wrappers/AddToCart";
 
-const AddToCart = () => {
-  return <h4>addToCart </h4>;
+const AddToCart = ({ id, stock, colors }) => {
+  const [mainColor, setMainColor] = useState(colors[0]);
+  const [amount, setAmount] = useState(1);
+
+  const increase = () => {
+    setAmount(prevAmount => {
+      if (prevAmount >= stock) {
+        return prevAmount = stock
+      }
+      return prevAmount + 1
+    })
+  };
+
+  const decrease = () => {
+    setAmount(prevAmount => {
+      if (prevAmount <= 1) {
+        return prevAmount = 1
+      }
+      return prevAmount - 1
+    })
+  };
+
+  return (
+    <Wrapper>
+      <div className="colors">
+        <span>colors : </span>
+        <div>
+          {colors.map((color, index) => (
+            <button
+              onClick={() => setMainColor(color)}
+              className={`${
+                mainColor === color ? "color-btn active" : "color-btn"
+              }`}
+              style={{ backgroundColor: color }}
+              key={index}
+            >
+              {mainColor === color && <FaCheck />}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="btn-container">
+        <AmountButtons
+          amount={amount}
+          increase={increase}
+          decrease={decrease}
+        />
+        <Link to="/cart" className="btn">
+          add to cart
+        </Link>
+      </div>
+    </Wrapper>
+  );
 };
 
 export default AddToCart;

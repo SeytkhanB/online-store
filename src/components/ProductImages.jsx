@@ -1,8 +1,26 @@
-import { useState } from 'react'
-import Wrapper from '../assets/wrappers/ProductImages'
+import { useState } from "react";
+import Wrapper from "../assets/wrappers/ProductImages";
 
-const ProductImages = () => {
-  return <h4>product images</h4>
-}
+const ProductImages = ({ images = [{ url: "" }] }) => {
+  // [{url: ""}] <-- initially images is undefined
+  const [mainImg, setMainImg] = useState(images[0]);
 
-export default ProductImages
+  return (
+    <Wrapper>
+      <img src={mainImg.url} alt="Main img" className="main" />
+      <div className="gallery">
+        {images.map((image, index) => (
+          <img
+            onClick={() => setMainImg(images[index])}
+            key={index}
+            src={image.url}
+            alt={image.filename}
+            className={`${image.url === mainImg.url ? "active" : null}`}
+          />
+        ))}
+      </div>
+    </Wrapper>
+  );
+};
+
+export default ProductImages;

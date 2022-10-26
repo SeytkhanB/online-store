@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   p {
     margin-left: 0.5rem;
     margin-bottom: 0;
+    font-weight: 500;
   }
   margin-bottom: 0.5rem;
 `;
