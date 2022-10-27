@@ -15,12 +15,12 @@ import { useProductsContext } from "./products_context";
 const initialState = {
   filtered_products: [],
   all_products: [],
-  grid_view: false,
+  grid_view: true,
   sort: "price-lowest",
   filters: {
     text: "",
-    company: "all",
     category: "all",
+    company: "all",
     color: "all",
     min_price: 0,
     max_price: 0,
@@ -58,12 +58,24 @@ export const FilterProvider = ({ children }) => {
   };
 
   const updateFilters = (e) => {
-    const { value, name } = e.target;
+    let { value, name } = e.target;
+    if (name === "category") {
+      value = e.target.textContent;
+    }
+    if (name === "color") {
+      value = e.target.dataset.color;
+    }
+    if (name === "price") {
+      value = Number(value);
+    }
+    if (name === "isShipping") {
+      value = e.target.checked;
+    }
     dispatch({ type: UPDATE_FILTERS, payload: { value, name } });
   };
 
   const clearFilters = () => {
-    console.log("Cleared!");
+    dispatch({ type: CLEAR_FILTERS });
   };
 
   return (
