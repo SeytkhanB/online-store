@@ -8,6 +8,11 @@ import Wrapper from "../assets/wrappers/CartButtons";
 const CartButtons = () => {
   const { closeSidebar } = useProductsContext();
   const { total_items } = useCartContext();
+  const { loginWithRedirect, logout, myUser } = useUserContext();
+
+  const userLogout = () => {
+    logout({ returnTo: window.location.origin });
+  };
 
   return (
     <Wrapper className="cart-btn-wrapper">
@@ -18,9 +23,16 @@ const CartButtons = () => {
           <span className="cart-value">{total_items}</span>
         </span>
       </Link>
-      <button type="button" className="auth-btn">
-        login <FaUserPlus />
-      </button>
+
+      {myUser ? (
+        <button className="auth-btn" type="button" onClick={userLogout}>
+          logout <FaUserMinus />
+        </button>
+      ) : (
+        <button type="button" className="auth-btn" onClick={loginWithRedirect}>
+          login <FaUserPlus />
+        </button>
+      )}
     </Wrapper>
   );
 };

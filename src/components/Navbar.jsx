@@ -9,6 +9,7 @@ import Wrapper from "../assets/wrappers/Navbar";
 
 const Nav = () => {
   const { openSidebar } = useProductsContext();
+  const { myUser } = useUserContext();
 
   return (
     <Wrapper>
@@ -30,9 +31,11 @@ const Nav = () => {
               </li>
             );
           })}
-          <li>
-            <Link to="/checkout">checkout</Link>
-          </li>
+          {myUser && (
+            <li>
+              <Link to="/checkout">checkout</Link>
+            </li>
+          )}
         </ul>
         <CartButtons />
       </div>

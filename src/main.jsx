@@ -17,13 +17,15 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       redirectUri={window.location.origin}
       cacheLocation="localstorage" // to save user to localStorage when he/she logins with social app
     >
-      <ProductsProvider>
-        <FilterProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
-        </FilterProvider>
-      </ProductsProvider>
+      <UserProvider>
+        <ProductsProvider>
+          <FilterProvider>
+            <CartProvider>
+              <App />
+            </CartProvider>
+          </FilterProvider>
+        </ProductsProvider>
+      </UserProvider>
     </Auth0Provider>
   </React.StrictMode>
 );
