@@ -1,0 +1,7 @@
+[build]
+  functions = "./functions"
+
+[dev]
+  framework = "next"
+  command = "npm run dev"
+  targetPort = 5173

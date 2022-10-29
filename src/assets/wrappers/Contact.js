@@ -63,10 +63,16 @@ const Wrapper = styled.section`
   @media (min-width: 1280px) {
     padding: 15rem 0;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 360px) {
     .form-input,
     .submit-btn {
       font-size: 0.7rem;
+    }
+  }
+  @media (max-width: 320px) {
+    .form-input,
+    .submit-btn {
+      font-size: 0.6rem;
       padding: 0.3rem 0.5rem;
     }
   }

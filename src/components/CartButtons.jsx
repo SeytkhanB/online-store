@@ -7,10 +7,11 @@ import Wrapper from "../assets/wrappers/CartButtons";
 
 const CartButtons = () => {
   const { closeSidebar } = useProductsContext();
-  const { total_items } = useCartContext();
+  const { total_items, clearCart } = useCartContext();
   const { loginWithRedirect, logout, myUser } = useUserContext();
 
   const userLogout = () => {
+    clearCart();
     logout({ returnTo: window.location.origin });
   };
 

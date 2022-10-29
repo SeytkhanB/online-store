@@ -20,12 +20,12 @@ export default function App() {
         <Sidebar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route path="/products/:productId" element={<SingleProductPage />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="cart" element={<CartPage />} />
+          <Route path="products" element={<ProductsPage />} />
+          <Route path="products/:productId" element={<SingleProductPage />} />
           <Route
-            path="/checkout"
+            path="checkout"
             element={
               <PrivateRoute>
                 <CheckoutPage />

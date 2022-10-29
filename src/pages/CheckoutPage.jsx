@@ -3,15 +3,32 @@ import { PageHero, StripeCheckout } from "../components";
 import { useCartContext } from "../context/cart_context";
 import { Link } from "react-router-dom";
 import Wrapper from "../assets/wrappers/CheckoutPage";
+import EmptyCartImg from "../assets/empty-cart.svg";
 
 const CheckoutPage = () => {
+  const { cart } = useCartContext();
+
+  if (cart.length === 0) {
+    return (
+      <main>
+        <PageHero title="checkout" />
+        <Wrapper className="page-100">
+          <div className="empty">
+            <img src={EmptyCartImg} alt="Image" />
+            <h2>Cart is empty</h2>
+            <Link to="/products" className="btn">
+              fill it
+            </Link>
+          </div>
+        </Wrapper>
+      </main>
+    );
+  }
+
   return (
-    <main>
-      <PageHero title="checkout" />
-      <Wrapper className="page">
-        <h1>checkout here</h1>
-      </Wrapper>
-    </main>
+    <Wrapper>
+      <StripeCheckout />
+    </Wrapper>
   );
 };
 
